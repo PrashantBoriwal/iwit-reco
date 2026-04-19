@@ -17,7 +17,8 @@ For every product (FSN) that has both excess and shortfall:
 """
 
 import pandas as pd
-
+import logging
+logging.basicConfig(level=logging.INFO)
 # ── 1. LOAD DATA ────────────────────────────────────────────────────────────────
 
 FILE = "IWIT_test.xlsx"   # ← update path if the file is elsewhere
@@ -26,7 +27,7 @@ shortfall = pd.read_excel(FILE, sheet_name="Shortfall")   # destinations needing
 excess    = pd.read_excel(FILE, sheet_name="Excess")       # sources with spare stock
 priority  = pd.read_excel(FILE, sheet_name="Priority")     # zone-lane priority scores
 
-print("Data loaded")
+logging.info("Data loaded")
 print(f"  Shortfall rows : {len(shortfall)}")
 print(f"  Excess rows    : {len(excess)}")
 print(f"  Priority rows  : {len(priority)}")
